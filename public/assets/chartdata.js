@@ -64,7 +64,7 @@ setInterval(() => {
       ethData.push(ethPrice);
       btcData.push(btcPrice);
 
-      oztgPriceTag.innerHTML = oztgPrice;
+      oztgPriceTag.innerHTML = `$ ${oztgPrice}`;
       btcPriceTag.innerHTML = `$ ${btcPrice}`;
       ethPriceTag.innerHTML = `$ ${ethPrice}`;
 
@@ -92,7 +92,6 @@ function initcharts() {
 
   chart1 = new Chart(oztgCTX, {
     type: "line",
-
     // The data for our dataset
     data: {
       labels: label,
@@ -104,7 +103,6 @@ function initcharts() {
           borderColor: "#358A9E",
 
           data: oztgData,
-
           fill: false,
           tension: 0.4,
           pointBackgroundColor: "rgba(0, 0, 0, 0.01)",
@@ -112,9 +110,9 @@ function initcharts() {
         },
       ],
     },
-
     // Configuration options
     options: {
+      responsive: true,
       layout: {
         padding: 10,
       },
@@ -122,13 +120,18 @@ function initcharts() {
         display: false,
         position: "bottom",
       },
-      //title: {
-      //			display: true,
-      //		text: 'Precipitation in Toronto'
-      //},
+
       scales: {
         yAxes: [
           {
+            type: "logarithmic",
+            ticks: {
+              min: 0,
+              stepSize: 0.001,
+              userCallback: function (label, index, labels) {
+                return label;
+              },
+            },
             scaleLabel: {
               display: false,
               labelString: "",
