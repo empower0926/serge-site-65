@@ -28,11 +28,13 @@ setInterval(() => {
 
       const ethPrice = markets[0].ticker.last;
       const oztgPrice = markets[1].ticker.last;
-      const btcPrice = markets[2].ticker.last;
+      const btcPrice = markets[3].ticker.last;
+
+      console.log(markets[1]);
 
       const ethDifference = markets[0].ticker.price_change_percent;
       const oztgDifference = markets[1].ticker.price_change_percent;
-      const btcDifference = markets[2].ticker.price_change_percent;
+      const btcDifference = markets[3].ticker.price_change_percent;
 
       oztgPercentTag.innerHTML = oztgDifference;
       ethPercentTag.innerHTML = ethDifference;
@@ -44,7 +46,7 @@ setInterval(() => {
 
       const ethVolume = markets[0].ticker.volume;
       const oztgVolume = markets[1].ticker.volume;
-      const btcVolume = markets[2].ticker.volume;
+      const btcVolume = markets[3].ticker.volume;
 
       ethVolumeTag.innerHTML = ethVolume;
       oztgVolumeTag.innerHTML = oztgVolume;
